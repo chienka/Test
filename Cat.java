@@ -6,7 +6,7 @@ public class Cat {
             String s;
 
             Scanner scn = new Scanner(System.in);
-            System.out.print("");
+//            System.out.print("");
             s = scn.nextLine();
             System.out.printf("%s\n", s);
             if(s.equals("exit()")){
