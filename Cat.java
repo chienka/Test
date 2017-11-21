@@ -1,30 +1,34 @@
 import java.io.*;
-import java.util.Scanner;
 
 public class Cat {
 
+    static void printFile(BufferedReader src) {
+        try {
+            int  ch;
+//read next character
+            while ((ch = src.read()) != -1)
+//                write character
+                System.out.print((char)ch);
+            src.close();
+        }
+        catch (IOException e) { }
+    }
 
     public static void main(String args[])
 
     {
-        File file = new File("Text.txt"); // create file textfile.txt
-        String absolutePath = file.getAbsolutePath();
-
-        System.out.println(file.getAbsolutePath());
-        System.out.println(file.getPath());
-
-//        String filePath = absolutePath.substring(0, absolutePath.lastIndexOf(File.separator));
-//        System.out.println("File Path : " + filePath);
-        while (true) {
-            String s;
-
-            Scanner scn = new Scanner(System.in);
-            s = scn.nextLine();
-            System.out.printf("%s\n", s);
-            if (s.equals("exit()")) {
-                break;
+        if (args.length < 1)
+            // fileName is null, read data from keyboard
+            printFile(new BufferedReader(new InputStreamReader(System.in)));
+        else {
+            for (int i = 1; i < args.length; i++) {
+                try {
+                    printFile(new BufferedReader(new FileReader(args[i])));
+                }
+                catch (FileNotFoundException e) {
+                    System.err.println("File" + args[i] + "can`t open!");
+                }
             }
-
         }
     }
 }
