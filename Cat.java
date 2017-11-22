@@ -8,6 +8,7 @@ public class Cat {
 //read next character
             while ((currentline = src.readLine()) != null)
 //                write character
+//write character
                 System.out.println(currentline);
             src.close();
         }
