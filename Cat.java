@@ -4,11 +4,11 @@ public class Cat {
 
     static void printFile(BufferedReader src) {
         try {
-            int  ch;
+            String  currentline;
 //read next character
-            while ((ch = src.read()) != -1)
+            while ((currentline = src.readLine()) != null)
 //                write character
-                System.out.print((char)ch);
+                System.out.println(currentline);
             src.close();
         }
         catch (IOException e) { }
@@ -18,10 +18,13 @@ public class Cat {
 
     {
         if (args.length < 1)
-            // fileName is null, read data from keyboard
+            // fileName is null, read data from input
             printFile(new BufferedReader(new InputStreamReader(System.in)));
         else {
-            for (int i = 1; i < args.length; i++) {
+            for (int i = 0; i < args.length; i++) {
+                if (args[i].equals("cat")){
+                    continue;
+                }
                 try {
                     printFile(new BufferedReader(new FileReader(args[i])));
                 }
